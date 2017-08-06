@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<title>{{name}}-{{ext.title}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{%- if author %}
+<meta name="author" content="{{author}}" />
+{%- endif %}
+{%- if keywords %}
+<meta name="keywords" content="{{keywords}}" />
+{%- endif %}
+{%- if description %}
+<meta name="description" content="{{description}}" />
+{%- endif %}
+<script src="{{_.js}}/h2e.js" type="text/javascript" ></script>
+</head>
+<body>
+能把任何html转换成element对象，测试请F12
+<div id="test"></div>
+<script>
+var html = {
+	number:123,
+	br1:'<br>',
+	text:'test',
+	header:'<header>header</header>',
+	div:'<div>test div</div>',
+	div2:'<div>1</div><div>2</div>',
+	img:'<img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png">',
+	br2:'<br>',
+	a:'<a href="http://baidu.com">baidu.com</a>',
+	table:'<table><tr><td>table>tr>td</td></td></td></tr></table>',
+	map:'<map>map</map>',
+	br:'<br>'
+}
+if(window.console)for(var type in html){
+	var element = h2e(html[type]);
+	for(var i=0,len=element.length;i<len;i++){
+		document.getElementById('test').appendChild(element[i]);
+	}
+	
+	console.log(type+':'+html[type]+':',element);
+}
+</script>
+</body>
+</html>
